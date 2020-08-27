@@ -4,7 +4,6 @@ import com.jigoo.domain.SampleDTO;
 import com.jigoo.domain.SampleDTOList;
 import com.jigoo.domain.TodoDTO;
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.proxy.annotation.Post;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
