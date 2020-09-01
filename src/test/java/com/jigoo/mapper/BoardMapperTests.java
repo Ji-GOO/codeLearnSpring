@@ -23,7 +23,7 @@ public class BoardMapperTests {
     }
 
     @Test
-    public void testInsert() {
+    public void 테스트_게시글_입력_통과() {
 
         BoardVO board = new BoardVO();
         board.setTitle("새로 작성하는 글");
@@ -36,7 +36,7 @@ public class BoardMapperTests {
     }
 
     @Test
-    public void testInsertSelectKey() {
+    public void 테스트_게시글_번호포함_입력_통과() {
 
         BoardVO board = new BoardVO();
         board.setTitle("새로 작성하는 글 select key");
@@ -49,7 +49,7 @@ public class BoardMapperTests {
     }
 
     @Test
-    public void testRead() {
+    public void 테스트_게시글_읽기_통과() {
 
         BoardVO board = mapper.read(5L);
 
@@ -57,14 +57,14 @@ public class BoardMapperTests {
     }
 
     @Test
-    public void testDelete() {
+    public void 테스트_게시글_삭제_통과() {
 
         log.info("DELETE COUNT : " + mapper.delete(3L));
 
     }
 
     @Test
-    public void 게시글_수정_통과() {
+    public void 테스트_게시글_수정_통과() {
 
         BoardVO board = new BoardVO();
         board.setBno(5L);
