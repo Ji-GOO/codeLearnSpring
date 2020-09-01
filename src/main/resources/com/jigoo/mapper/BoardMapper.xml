@@ -5,7 +5,7 @@
 <mapper namespace="com.jigoo.mapper.BoardMapper">
     <select id="getList" resultType="com.jigoo.domain.BoardVO">
         <![CDATA[
-        SELECT * FROM tbl_board WHERE bno > 0
+        SELECT * FROM tbl_board WHERE bno > 0 order by bno
         ]]>
     </select>
 

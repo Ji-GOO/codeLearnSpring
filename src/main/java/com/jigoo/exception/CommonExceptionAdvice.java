@@ -19,13 +19,13 @@ public class CommonExceptionAdvice {
         model.addAttribute("exception", ex);
         log.error(model);
 
-        return "/sample/error-page";
+        return "/error/error-page";
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handle404(NoHandlerFoundException ex) {
 
-        return "/sample/custom404";
+        return "/error/custom404";
     }
 }

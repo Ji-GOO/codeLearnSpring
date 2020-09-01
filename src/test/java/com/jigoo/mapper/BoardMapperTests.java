@@ -26,8 +26,8 @@ public class BoardMapperTests {
     public void testInsert() {
 
         BoardVO board = new BoardVO();
-        board.setTitle("새로 작성하는 글");
-        board.setContent("새로 작성하는 내용");
+        board.setTitle("새로 작성하는 글11");
+        board.setContent("새로 작성하는 내용11");
         board.setWriter("newbie");
 
         mapper.insert(board);
