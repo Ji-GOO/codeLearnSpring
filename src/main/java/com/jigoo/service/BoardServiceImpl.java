@@ -1,6 +1,7 @@
 package com.jigoo.service;
 
 import com.jigoo.domain.BoardVO;
+import com.jigoo.domain.Criteria;
 import com.jigoo.mapper.BoardMapper;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -49,10 +50,10 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardVO> getList() {
+    public List<BoardVO> getList(Criteria cri) {
 
-        log.info("getList.............");
+        log.info("get List with criteria : " + cri);
 
-        return mapper.getList();
+        return mapper.getListWithPaging(cri);
     }
 }
