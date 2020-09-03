@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>해당 페이지는 존재하지 않습니다.</h1>
+    <h1>해당 URL은 존재하지 않습니다.</h1>
 </body>
 </html>
