@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jigoo.mapper.BoardMapper">
+
     <select id="getList" resultType="com.jigoo.domain.BoardVO">
         <![CDATA[
         SELECT *
@@ -63,7 +64,8 @@
 
     <insert id="insertSelectKey">
         <selectKey keyProperty="bno" order="BEFORE" resultType="long">
-            SELECT seq_board.nextval FROM dual
+            SELECT seq_board.nextval
+                FROM dual
         </selectKey>
 
         INSERT INTO tbl_board (bno, title, content, writer)
@@ -71,16 +73,20 @@
     </insert>
 
     <select id="read" resultType="com.jigoo.domain.BoardVO">
-        SELECT * FROM tbl_board WHERE bno = #{bno}
+        SELECT *
+            FROM tbl_board
+                WHERE bno = #{bno}
     </select>
 
     <delete id="delete">
-        DELETE FROM tbl_board WHERE bno = #{bno}
+        DELETE FROM tbl_board
+            WHERE bno = #{bno}
     </delete>
 
     <update id="update">
-        UPDATE tbl_board SET
-            title = #{title}, content = #{content}, writer = #{writer}, updatedate = sysdate
+        UPDATE tbl_board
+            SET title = #{title}, content = #{content}, writer = #{writer}, updatedate = sysdate
                 WHERE bno = #{bno}
     </update>
+
 </mapper>

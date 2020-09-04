@@ -10,12 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import sun.jvm.hotspot.debugger.Page;
 
 @Controller
-@Log4j
 @RequestMapping("/board/*")
 @AllArgsConstructor
+@Log4j
 public class BoardController {
 
     private BoardService service;
