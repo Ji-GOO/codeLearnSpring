@@ -2,10 +2,38 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        .uploadResult {
+            width: 100%;
+            background-color: gray;
+        }
+
+        .uploadResult ul {
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .uploadResult ul li {
+            list-style: none;
+            padding: 10px;
+        }
+
+        .uploadResult ul li img {
+            width: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="uploadDiv">
         <input type="file" name="uploadFile" multiple>
+    </div>
+
+    <div class="uploadResult">
+        <ul>
+
+        </ul>
     </div>
 
     <button id="uploadBtn">Upload</button>
@@ -33,6 +61,8 @@
                 return true;
             }
 
+            var cloneObj = $(".uploadDiv").clone();
+
             $("#uploadBtn").on("click", function(e) {
                 var formData = new FormData();
                 var inputFile = $("input[name='uploadFile']");
@@ -57,9 +87,29 @@
                     dataType : "json",
                     success : function(result) {
                         console.log(result);
+                        showUploadedFile(result);
+                        $(".uploadDiv").html(cloneObj.html());
                     }
                 });
             });
+
+            var uploadResult = $(".uploadResult ul");
+
+            function showUploadedFile(uploadResultAttr) {
+                var str = "";
+
+                $(uploadResultAttr).each(function(i, obj) {
+                    if (!obj.image) {
+                        str += "<li><img src='/resources/img/attach.png'>" + obj.fileName + "</li>";
+                    } else {
+                        var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+
+                        str += "<li><img src='/display?fileName=" + fileCallPath + "'></li>";
+                    }
+                });
+
+                uploadResult.append(str);
+            }
         });
     </script>
 </body>
