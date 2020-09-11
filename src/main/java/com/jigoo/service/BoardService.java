@@ -1,5 +1,6 @@
 package com.jigoo.service;
 
+import com.jigoo.domain.BoardAttachVO;
 import com.jigoo.domain.BoardVO;
 import com.jigoo.domain.Criteria;
 
@@ -18,4 +19,6 @@ public interface BoardService {
     public List<BoardVO> getList(Criteria cri);
 
     public int getTotal(Criteria cri);
+
+    public List<BoardAttachVO> getAttachList(Long bno);
 }

@@ -6,7 +6,7 @@
 
     <insert id="insert">
         INSERT INTO tbl_attach (uuid, uploadpath, filename, filetype, bno)
-            VALUES(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
+            VALUES (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
     </insert>
 
     <delete id="delete">
@@ -14,7 +14,7 @@
             WHERE uuid = #{uuid}
     </delete>
 
-    <select id="findByBno" resultType="com.jigoo.mapper.BoardAttachMapper">
+    <select id="findByBno" resultType="com.jigoo.domain.BoardAttachVO">
         SELECT *
             FROM tbl_attach
                 WHERE bno = #{bno}

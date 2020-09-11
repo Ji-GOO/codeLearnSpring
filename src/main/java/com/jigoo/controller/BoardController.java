@@ -1,15 +1,21 @@
 package com.jigoo.controller;
 
+import com.jigoo.domain.BoardAttachVO;
 import com.jigoo.domain.BoardVO;
 import com.jigoo.domain.Criteria;
 import com.jigoo.domain.PageDTO;
 import com.jigoo.service.BoardService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/board/*")
@@ -92,5 +98,11 @@ public class BoardController {
         return "redirect:/board/list" + cri.getListLink();
     }
 
+    @GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<List<BoardAttachVO>> getAttachList(Long bno) {
+        log.info("getAttachList : " + bno);
 
+        return new ResponseEntity<>(service.getAttachList(bno), HttpStatus.OK);
+    }
 }
