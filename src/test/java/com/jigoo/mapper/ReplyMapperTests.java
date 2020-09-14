@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 @Log4j
 public class ReplyMapperTests {
 
-    private Long[] bnoArr = {6651L, 6650L, 6649L, 6648L, 6647L};
+    private Long[] bnoArr = {4096L, 4095L, 4094L, 4093L, 4092L};
 
     @Setter(onMethod_ = @Autowired)
     private ReplyMapper mapper;
@@ -46,7 +46,7 @@ public class ReplyMapperTests {
     @Test
     public void testRead() {
 
-        Long targetRno = 11L;
+        Long targetRno = 4096L;
 
         ReplyVO vo = mapper.read(targetRno);
 
