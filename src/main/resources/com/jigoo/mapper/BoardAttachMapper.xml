@@ -25,4 +25,10 @@
             WHERE bno = #{bno}
     </delete>
 
+    <select id="getOldFiles" resultType="com.jigoo.domain.BoardAttachVO">
+        SELECT *
+            FROM tbl_attach
+                WHERE uploadpath = to_char(sysdate - 1, 'yyyy/MM/dd')
+    </select>
+
 </mapper>
