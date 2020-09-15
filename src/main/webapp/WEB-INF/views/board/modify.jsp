@@ -240,6 +240,9 @@
                 }
             });
 
+            var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+            var maxSize = 5242880; // 5MB
+
             function checkExtension(fileName, fileSize) {
                 if(fileSize >= maxSize) {
                     alert("파일 사이즈 초과");
