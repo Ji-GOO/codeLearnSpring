@@ -4,8 +4,7 @@
 <html>
 <head>
     <title>Logout</title>
-</head>
-<body>
+
     <!-- Bootstrap Core CSS -->
     <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,8 +16,8 @@
 
     <!-- Custom Fonts -->
     <link href="/resources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    </head>
-    <body>
+</head>
+<body>
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
