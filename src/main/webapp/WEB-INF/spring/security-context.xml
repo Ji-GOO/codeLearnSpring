@@ -6,7 +6,6 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="customAccessDenied" class="com.jigoo.security.CustomAccessDeniedHandler" />
-    <bean id="customLoginSuccess" class="com.jigoo.security.CustomLoginSuccessHandler" />
     <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
     <bean id="customUserDetailsService" class="com.jigoo.security.CustomUserDetailsService" />
 
@@ -14,8 +13,9 @@
         <security:intercept-url pattern="/sample/all" access="permitAll()" />
         <security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')" />
         <security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/board/register" access="hasAnyRole('ROLE_USER', 'ROLE_MEMBER', 'ROLE_ADMIN')" />
 
-        <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess" />
+        <security:form-login login-page="/customLogin" />
         <security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID" />
 
         <security:access-denied-handler ref="customAccessDenied" />

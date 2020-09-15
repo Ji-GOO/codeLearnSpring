@@ -1,6 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ include file="../includes/header.jsp" %>
 
@@ -21,6 +22,7 @@
                 <div class="panel-body">
 
                     <form role="form" action="/board/modify" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
                         <!-- 추가 -->
                         <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}" />'>
@@ -53,8 +55,13 @@
                             <label>Update Date</label> <input class="form-control" name="updateDate" value='<fmt:formatDate value="${board.updatedate}" pattern="yyyy/MM/dd" />' readonly="readonly">
                         </div>
 
-                        <button type="submit" data-oper="modify" class="btn btn-default">Modify</button>
-                        <button type="submit" data-oper="remove" class="btn btn-danger">Remove</button>
+                        <sec:authentication property="principal" var="pinfo" />
+                        <sec:authorize access="isAuthenticated()">
+                            <c:if test="${pinfo.username eq board.writer}">
+                                <button type="submit" data-oper="modify" class="btn btn-default">Modify</button>
+                                <button type="submit" data-oper="remove" class="btn btn-danger">Remove</button>
+                            </c:if>
+                        </sec:authorize>
                         <button type="submit" data-oper="list" class="btn btn-info">List</button>
 
                     </form>
@@ -249,6 +256,9 @@
                 return true;
             }
 
+            var csrfHeaderName = "${_csrf.headerName}";
+            var csrfTokenValue = "${_csrf.token}";
+
             $("input[type='file']").change(function(e) {
                 var formData = new FormData();
 
@@ -268,6 +278,9 @@
                     url : "/uploadAjaxAction",
                     processData : false,
                     contentType : false,
+                    beforeSend : function(xhr) {
+                        xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+                    },
                     data : formData,
                     type : "POST",
                     dataType : "json",
